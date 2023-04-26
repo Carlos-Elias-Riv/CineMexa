@@ -35,7 +35,7 @@ def getIMDBUrl(peli: str) -> str:
 data = pd.read_csv('/Users/cerivera/Documents/ProyectoCineMexicano/RATINGS/peliculasmexas2016-2021.csv')
 pelis = data['Film'].to_list()
 
-urls = Parallel(n_jobs=5)(delayed(getIMDBUrl)(peli) for peli in pelis)
+urls = Parallel(n_jobs=6)(delayed(getIMDBUrl)(peli) for peli in pelis)
 
-data['imdburl'] = urls
+data['letterboxdurl'] = urls
 data.to_csv('/Users/cerivera/Documents/ProyectoCineMexicano/RATINGS/pelismexasconletterboxd.csv', sep=',', encoding='utf-8', index=False)
